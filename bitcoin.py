@@ -69,7 +69,7 @@ def telegram_update(bit_coin_price):
     requests.post(ifttt_event_url)
 
 
-schedule.every(1).minutes.do(insert_db)
+schedule.every(60).minutes.do(insert_db)
 while True:
     schedule.run_pending()
     time.sleep(1)
