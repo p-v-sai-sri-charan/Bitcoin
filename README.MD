@@ -1,5 +1,8 @@
+Bitcoin price Notifier
 Need Mongodb
-Bitcoin price Notifier 
 install requriements 
-for every hour you will be getting the telegram updates AND the data is stored in mongo db
-if it touch the threshold value emergency IFTTT web app notification will be sent
+This code will connect to CoinMarketcap through API and get the Bitcoin data every hour
+Those prices will be notified to the user using IFTTT and Telegram
+To get these notification we will be using IFTTT it makes us to link between the two different platform/application  user at an ease. It works on a principal that if this then that so go to IFTTT/create click on the this and select Webhooks to receive a Post request and click on the that and select the notification to get the notification on mobile through IFTTT Appliction. And similarly click on the this and select Webhooks to receive a Post request and click on the that and select the Telegram(rich telegram updates) to get the bitcoin prices on mobile through telegram bot.  
+For every hour you will be getting the telegram updates AND the data is stored in mongo db
+If it touchs the threshold value emergency IFTTT web app notification will be sent to the user
