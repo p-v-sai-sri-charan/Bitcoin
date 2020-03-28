@@ -28,7 +28,7 @@ def get_bitcoin():
     response = session.get(url, params=parameters)
     data = json.loads(response.text)
     price = data['data'][0]['quote']['USD']['price']
-    print("Latest Bit Coin Price :"+price)
+    print("Latest Bit Coin Price :",price)
     if price >= 6500 and price <=6000:
         event = 'bit_coin_price_emergency'
         event_url = 'https://maker.ifttt.com/trigger/{}/with/key/eMTgQL8QHS3YbRdIAqq0eoPptSNmgMrj7LGTZoBz0ew?value1={}'
