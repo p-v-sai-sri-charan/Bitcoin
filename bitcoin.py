@@ -6,6 +6,8 @@ import json
 import schedule
 import time
 from datetime import timedelta
+from matplotlib import pyplot
+import pylab as pl
 #import settings
 client = pymongo.MongoClient('mongodb://localhost:27017/')
 dblist = client.list_database_names()
@@ -62,6 +64,22 @@ def insert_db():
         insert_db()
 
     telegram_update(bit_coin_price)
+    graph()
+
+def graph():
+    db = client["project3"]
+    collection = db["bitcoin"]
+    myresult = collection.find()
+    a=[]
+    b= []
+    for x in myresult:
+        i = x['price']
+        a.append(i)
+        j = x['date'].strftime("%x")
+        b.append(j)
+
+    pl.plot(a,b)
+    pl.show()
 
 def telegram_update(bit_coin_price):
     event = 'bit_coin_telegram'
@@ -69,8 +87,7 @@ def telegram_update(bit_coin_price):
     requests.post(ifttt_event_url)
 
 
-schedule.every(60).minutes.do(insert_db)
+schedule.every(10).seconds.do(insert_db)
 while True:
     schedule.run_pending()
     time.sleep(1)
-    
